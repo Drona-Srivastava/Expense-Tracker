@@ -63,16 +63,14 @@ function addTransactionDOM(transaction) {
   //GET sign
   const sign = transaction.amount < 0 ? "-" : "+";
   const item = document.createElement("li");
-  // const itemdesp = document.createElement("p");
   //Add Class Based on Value
   item.classList.add(
     transaction.amount < 0 ? "minus" : "plus"
   );
   
-  item.innerHTML =`${transaction.text} <span>${date.value}</span> <span>${sign}${Math.abs(transaction.amount)}</span><span>${category.value}</span>
-  <span>${description.value}</span>
+  item.innerHTML =`${transaction.text} <span>${transaction.date}</span> <span>${sign}${Math.abs(transaction.amount)}</span><span>${transaction.category}</span>
+  <span>${transaction.description}</span>
   <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>`;
-
 
   list.appendChild(item);
 }
@@ -113,7 +111,14 @@ function updateLocalStorage(){
 
 //Init App
 function Init() {
-  list.innerHTML = "";
+  list.innerHTML = `
+  <li>
+    Text 
+    <span>Date</span> 
+    <span>Amount</span>
+    <span>Category</span>
+    <span>Description</span>
+  </li>`;
   transactions.forEach(addTransactionDOM);
   updateValues();
 }
