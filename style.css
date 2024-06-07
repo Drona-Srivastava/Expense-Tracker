@@ -46,6 +46,11 @@ h4 {
     font-size: 20px;
 }
   
+h4.balance,
+h1#balance{
+    text-align: center;
+}
+
 .inc-exp-container {
     background-color: #EDECD8;
     box-shadow: var(--box--shadow);
