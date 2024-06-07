@@ -8,9 +8,7 @@ const amount = document.getElementById("amount");
 const category = document.getElementById("category");
 const description = document.getElementById("description");
 const date = document.getElementById("datepicker");
-const popupContent = document.getElementById('popupContent');
-const popupClose = document.getElementById('popupClose');
-
+const tableBody = document.getElementById("table-body");
 //Datepicker
 $( function() {
   $( "#datepicker" ).datepicker();
@@ -67,8 +65,13 @@ function addTransactionDOM(transaction) {
   item.classList.add(
     transaction.amount < 0 ? "minus" : "plus"
   );
-  
-  item.innerHTML =`${transaction.text} <span>${transaction.date}</span> <span>${sign}${Math.abs(transaction.amount)}</span><span>${transaction.category}</span>
+  // Extracting only the date and month from the full date string
+  const transactionDate = new Date(transaction.date);
+  const date = transactionDate.getDate(); // Get the day of the month
+  const month = transactionDate.toLocaleString('en', { month: 'short' }); // Get the abbreviated month name
+
+  const formattedDate = `${date} ${month}`;
+  item.innerHTML =`${transaction.text} <span>${formattedDate}</span> <span>${sign}${Math.abs(transaction.amount)}</span><span>${transaction.category}</span>
   <span>${transaction.description}</span>
   <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>`;
 
@@ -126,3 +129,11 @@ function Init() {
 Init();
   
 form.addEventListener('submit',addTransaction);
+
+/* 
+  // Extracting only the date and month from the full date string
+  const transactionDate = new Date(transaction.date);
+  const date = transactionDate.getDate(); // Get the day of the month
+  const month = transactionDate.toLocaleString('en', { month: 'short' }); // Get the abbreviated month name
+
+  const formattedDate = `${date} ${month}`; */
