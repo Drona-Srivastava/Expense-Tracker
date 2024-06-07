@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+    <h2>Expense Tracker</h2>
+    <div class="container">
+      <h4 class="balance">Your Balance</h4>
+      <h1 class="balance" id="balance">₹ 0.00</h1>
+      <div class="inc-exp-container">
+        <div>
+          <h4>Income</h4>
+          <p id="money-plus" class="money-plus">
+            +₹ 0.00
+          </p>
+        </div>
+        <div>
+          <h4>Expense</h4>
+          <p id="money-minus" class="money-minus">
+            -₹ 0.00
+          </p>
+        </div>
+      </div>
+      <h3>History</h3>
+      <ul id="list" class="list">
+        <li>
+          Text 
+          <span>Date</span> 
+          <span>Amount</span>
+          <span>Category</span>
+          <span>Description</span>
+        </li>
+      </ul>
+      <h3>Add New Transition</h3>
+      <form id="form">
+          <div class="form-control">
+              <label for="text" required>Text</label>
+              <input type="text" id="text" placeholder="Enter Text...."/>
+          </div>
+          <div class="form-control" required>
+            <label for="text">Description</label>
+            <input type="text" id="description" placeholder="Enter Text...."/>
+        </div>
+          <div class="form-control" required>
+              <label for="amount">Amount <br> (negative - expense ,positive - income )</label>
+              <input type="number" id="amount" placeholder="Enter amount..."> 
+          </div>
+          <div class="form-group">
+            <label for="category">Choose Category</label>
+            <select class="form-control" id="category" required>
+              <option value="" disabled selected hidden >Choose Category</option>
+              <option value="Salary">Salary</option>
+              <option value="Food">Food</option>
+              <option value="Travel">Travel</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Movie">Movies</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <label for="date">Date</label>
+          <input type="text" id="datepicker" name="date" required>
+          <button class="btn">Add transaction</button>
+      </form>
+      
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
